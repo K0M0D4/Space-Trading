@@ -30,8 +30,11 @@ FetchContent_Declare(GLM
 FetchContent_MakeAvailable(GLM)
 
 add_executable(${PROJECT_NAME}
+    src/engine/stb_image.cpp
+
     src/engine/Quad.cpp
     src/engine/Shader.cpp
+    src/engine/Texture.cpp
     src/engine/Window.cpp
 
     src/Game.cpp

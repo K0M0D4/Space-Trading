@@ -25,6 +25,8 @@ Window::Window(int width, int height, const std::string& title) {
     initGLAD();
 
     glViewport(0, 0, glob::width, glob::height);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glEnable(GL_BLEND);
 }
 
 Window::~Window() {

@@ -7,9 +7,12 @@ int main() {
 }
 
 Game::Game() {
+    m_texture.load("res/textures/spaceship.png", true);
+
     m_shader.load("res/shaders/basicV.glsl", "res/shaders/basicF.glsl");
     m_quad.bindToShader(&m_shader);
-    m_quad.setColor(glm::vec3{0.8f, 0.8f, 0.8f});
+    m_quad.setColor(glm::vec3{1.0f, 0.0f, 0.1f});
+    m_quad.setTexture(&m_texture);
 
     mainLoop();
 }
@@ -20,9 +23,11 @@ void Game::mainLoop() {
         render();
     }
 }
+
 void Game::update() {
 
 }
+
 void Game::render() {
     m_window.clear(0.1f, 0.1f, 0.2f);
 
