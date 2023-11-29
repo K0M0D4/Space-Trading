@@ -8,7 +8,8 @@ int main() {
 
 Game::Game() {
     m_shader.load("res/shaders/basicV.glsl", "res/shaders/basicF.glsl");
-    m_shader.use();
+    m_quad.bindToShader(&m_shader);
+    m_quad.setColor(glm::vec3{0.8f, 0.8f, 0.8f});
 
     mainLoop();
 }

@@ -1,7 +1,12 @@
 #pragma once
 
+#include "Shader.hpp"
+
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include <array>
 
@@ -9,9 +14,16 @@ class Quad {
 public:
     Quad();
 
+    void bindToShader(Shader* shader);
+
+    void setColor(glm::vec3 color);
+    void setColor(glm::vec4 color);
+
     void render();
 
 private:
+    Shader* m_shader;
+
     unsigned int m_VAO{};
     unsigned int m_VBO{};
     unsigned int m_EBO{};

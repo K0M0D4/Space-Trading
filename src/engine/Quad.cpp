@@ -1,5 +1,13 @@
 #include "Quad.hpp"
 
+
+
+
+#include <iostream>
+
+
+
+
 Quad::Quad() {
     glGenVertexArrays(1, &m_VAO);
     glGenBuffers(1, &m_VBO);
@@ -17,7 +25,22 @@ Quad::Quad() {
     glEnableVertexAttribArray(0);
 }
 
+void Quad::bindToShader(Shader* shader) {
+    m_shader = shader;
+}
+
+void Quad::setColor(glm::vec3 color) {
+    m_shader->use();
+    glUniform4f(m_shader->findUniform("inColor"), color.x, color.y, color.z, 1.0f);
+}
+
+void Quad::setColor(glm::vec4 color) {
+    m_shader->use();
+    glUniform4f(m_shader->findUniform("inColor"), color.x, color.y, color.z, color.w);
+}
+
 void Quad::render() {
+    m_shader->use();
     glBindVertexArray(m_VAO);
     glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 }
