@@ -7,6 +7,9 @@ int main() {
 }
 
 Game::Game() {
+    m_shader.load("res/shaders/basicV.glsl", "res/shaders/basicF.glsl");
+    m_shader.use();
+
     mainLoop();
 }
 
@@ -21,6 +24,8 @@ void Game::update() {
 }
 void Game::render() {
     m_window.clear(0.1f, 0.1f, 0.2f);
+
+    m_quad.render();
 
     m_window.swapBuffers();
 }
